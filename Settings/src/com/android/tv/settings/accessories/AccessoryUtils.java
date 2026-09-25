@@ -21,6 +21,7 @@ import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothProfile;
 import android.content.Context;
+import android.view.InputDevice;
 import android.text.Html;
 import android.util.Log;
 
@@ -97,6 +98,41 @@ final class AccessoryUtils {
             return null;
         }
         return device.getAlias();
+    }
+
+    /**
+     * Whether the device already has a usable physical input device attached —
+     * a USB/BT keyboard, a d-pad or a gamepad.
+     *
+     * The accessory pairing screen is shown during setup so that a user with no
+     * input at all can pair a remote. When something is already attached the
+     * user can navigate, and should be offered a way past the step instead of
+     * waiting on a scan that may never find anything (for example on a board
+     * with no Bluetooth radio fitted).
+     *
+     * Virtual devices are ignored: the framework always exposes a virtual
+     * keyboard, so counting it would make this always true.
+     */
+    public static boolean hasPhysicalInputDevice() {
+        for (int id : InputDevice.getDeviceIds()) {
+            final InputDevice device = InputDevice.getDevice(id);
+            if (device == null || device.isVirtual()) {
+                continue;
+            }
+            final int sources = device.getSources();
+            final boolean isDpad =
+                    (sources & InputDevice.SOURCE_DPAD) == InputDevice.SOURCE_DPAD;
+            final boolean isGamepad =
+                    (sources & InputDevice.SOURCE_GAMEPAD) == InputDevice.SOURCE_GAMEPAD;
+            final boolean isAlphabeticKeyboard =
+                    (sources & InputDevice.SOURCE_KEYBOARD) == InputDevice.SOURCE_KEYBOARD
+                            && device.getKeyboardType()
+                                    == InputDevice.KEYBOARD_TYPE_ALPHABETIC;
+            if (isDpad || isGamepad || isAlphabeticKeyboard) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static boolean isBluetoothEnabled() {

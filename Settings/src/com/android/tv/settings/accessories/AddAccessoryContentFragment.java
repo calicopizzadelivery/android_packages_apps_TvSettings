@@ -47,7 +47,15 @@ public class AddAccessoryContentFragment extends ProgressDialogFragment {
         super.onViewCreated(view, savedInstanceState);
         setTitle(R.string.accessories_add_title);
         setIcon(R.drawable.ic_bluetooth_searching_128dp);
-        setSummary(R.string.accessories_add_bluetooth_inst);
+        // This screen has no other exit: it is shown during setup so that a user
+        // with no input device can pair a remote, and it keeps scanning until
+        // something is found. Back does leave it, but nothing says so. When the
+        // user demonstrably has something to press Back with, say so — it is the
+        // difference between a slow step and an apparent dead end on hardware
+        // with no Bluetooth radio fitted.
+        setSummary(AccessoryUtils.hasPhysicalInputDevice()
+                ? R.string.accessories_add_bluetooth_inst_skippable
+                : R.string.accessories_add_bluetooth_inst);
         updateExtraDescription();
         if (getResources() != null) {
             TypedValue lineSpacingMultiplier = new TypedValue();
