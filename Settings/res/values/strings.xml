@@ -2478,6 +2478,8 @@
     <string name="device_daydreams_select">Screen saver</string>
     <!-- Screen saver choice for testing the selected screen saver [CHAR LIMIT=40] -->
     <string name="device_daydreams_test">Start now</string>
+    <!-- Screen saver settings: title for the row that opens the selected screen saver's own settings. [CHAR LIMIT=30] -->
+    <string name="device_daydreams_settings">Screen saver options</string>
     <!-- Screen saver choice for configuring the time before the device goes to sleep [CHAR LIMIT=40] -->
     <string name="device_daydreams_sleep">When to start</string>
     <!-- Screen saver description for configuring the time before the device goes to sleep [CHAR LIMIT=NONE] -->

@@ -26,6 +26,11 @@
         android:summary="%s"
         android:dialogTitle="@string/device_daydreams_select" />
 
+    <!-- Shown only when the selected screen saver declares a settingsActivity. -->
+    <Preference
+        android:key="dreamSettings"
+        android:title="@string/device_daydreams_settings" />
+
     <com.android.tv.settings.device.display.daydream.DreamTimePreference
         android:key="dreamTime"
         android:persistent="true"
