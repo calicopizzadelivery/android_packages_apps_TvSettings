@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/airplay_code_title">
+    <com.android.tv.settings.RadioPreference
+        android:key="code_on"
+        android:persistent="false"
+        android:summary="@string/airplay_code_on_summary"
+        android:title="@string/airplay_code_on" />
+    <com.android.tv.settings.RadioPreference
+        android:key="code_off"
+        android:persistent="false"
+        android:summary="@string/airplay_code_off_summary"
+        android:title="@string/airplay_code_off" />
+</PreferenceScreen>

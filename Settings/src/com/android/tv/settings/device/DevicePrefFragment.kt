@@ -52,6 +52,7 @@ import com.android.tv.settings.autofill.AutofillHelper
 import com.android.tv.settings.customization.CustomizationConstants
 import com.android.tv.settings.customization.Partner
 import com.android.tv.settings.customization.PartnerPreferencesMerger
+import com.android.tv.settings.device.airplay.AirPlayClient
 import com.android.tv.settings.device.eco.PowerAndEnergyFragment
 import com.android.tv.settings.inputmethod.InputMethodHelper
 import com.android.tv.settings.overlay.FlavorUtils
@@ -135,6 +136,7 @@ class DevicePrefFragment : SettingsPreferenceFragment(), LongClickPreference.OnL
         hideIfIntentUnhandled(findPreference(KEY_HOME_SETTINGS))
         hideIfIntentUnhandled(findPreference(KEY_CAST_SETTINGS))
         hideIfIntentUnhandled(findPreference(KEY_USAGE))
+        findPreference<Preference>(KEY_AIRPLAY)?.isVisible = AirPlayClient.isInstalled(requireContext())
         viewLifecycleOwner.lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 updateInternalSettings()
@@ -408,6 +410,7 @@ class DevicePrefFragment : SettingsPreferenceFragment(), LongClickPreference.OnL
         @JvmField
         @VisibleForTesting
         val KEY_DEVELOPER = "developer"
+        private const val KEY_AIRPLAY = "airplay"
 
         @JvmField
         @VisibleForTesting

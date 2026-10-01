@@ -39,6 +39,13 @@
         android:icon="@drawable/ic_settings_system_daydream"
         android:key="daydream"
         android:title="@string/device_daydream"/>
+    <!-- The AirPlay receiver's settings. DevicePrefFragment hides the row on
+         a build without the receiver. -->
+    <Preference
+        android:fragment="com.android.tv.settings.device.airplay.AirPlayFragment"
+        android:icon="@drawable/ic_cast"
+        android:key="airplay"
+        android:title="@string/airplay_title"/>
     <Preference
         android:fragment="com.android.tv.settings.device.eco.PowerAndEnergyFragment"
         android:icon="@drawable/ic_settings_power_and_energy"

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<!-- Settings > System > AirPlay. The paired devices are filled in by
+     AirPlayFragment. -->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/airplay_title">
+    <SwitchPreference
+        android:key="airplay_enabled"
+        android:persistent="false"
+        android:summary="@string/airplay_enabled_summary"
+        android:title="@string/airplay_title" />
+    <!-- AirPlay advertises the device name, so this is where to change it. -->
+    <Preference
+        android:key="airplay_name"
+        android:title="@string/airplay_name_title">
+        <intent android:action="android.settings.DEVICE_NAME" />
+    </Preference>
+    <Preference
+        android:fragment="com.android.tv.settings.device.airplay.AirPlayCodeFragment"
+        android:key="airplay_code"
+        android:title="@string/airplay_code_title" />
+    <PreferenceCategory
+        android:key="airplay_paired"
+        android:title="@string/airplay_paired_title" />
+</PreferenceScreen>
