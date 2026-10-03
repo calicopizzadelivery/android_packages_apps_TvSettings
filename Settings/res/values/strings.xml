@@ -3022,6 +3022,10 @@
     <!-- Subtitle for volume change during select -->
     <string name="volume_change_subtitle_select">Only affects volume on %1$s device , not on TV</string>
 
+    <!-- System > Buttons: a game controller's centre (Guide) button -->
+    <string name="gamepad_home_button_title">Controller Home button</string>
+    <string name="gamepad_home_button_summary">The big centre button on a game controller goes to the home screen. Turn this off to send it to apps instead, as the Guide button \u2014 for the Steam Big Picture menu over game streaming.</string>
+
     <!-- System > AirPlay: the AirPlay receiver (org.lineageos.tv.airplay) -->
     <string name="airplay_title" translatable="false">AirPlay</string>
     <!-- Summary of the switch that turns the AirPlay receiver on and off -->

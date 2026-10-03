@@ -20,6 +20,7 @@ import android.app.tvsettings.TvSettingsEnums;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.UserHandle;
+import android.provider.Settings;
 
 import androidx.annotation.Keep;
 import androidx.preference.ListPreference;
@@ -43,6 +44,14 @@ public class ButtonsFragment extends SettingsPreferenceFragment
     private static final String KEY_ADVANCED_REBOOT = "advanced_reboot";
     private static final String KEY_POWER_BUTTON_LONG_PRESS_ACTION =
             "power_button_long_press_action";
+    /**
+     * The big centre button on a game controller. JetsonTVKeyHandler reads
+     * this on every press: 1 goes Home, 0 passes the button to the app as
+     * KEYCODE_BUTTON_MODE, which is what Steam Big Picture wants.
+     */
+    private static final String KEY_GAMEPAD_HOME_BUTTON = "gamepad_home_button";
+    private static final String GAMEPAD_HOME_BUTTON_SETTING = "jetsontv_gamepad_home_button";
+
     private static final String KEY_PRESS_VOLUME_UP_AND_DOWN_TO_MUTE =
             "press_volume_up_and_down_to_mute";
 
@@ -91,6 +100,16 @@ public class ButtonsFragment extends SettingsPreferenceFragment
             (preference, newValue) -> {
                 LineageSettings.System.putInt(context.getContentResolver(),
                         LineageSettings.System.VOLUME_UP_AND_DOWN_MUTE, (Boolean) newValue ? 1 : 0);
+                return true;
+            });
+
+        TwoStatePreference gamepadHome = findPreference(KEY_GAMEPAD_HOME_BUTTON);
+        gamepadHome.setChecked(Settings.Secure.getInt(context.getContentResolver(),
+                GAMEPAD_HOME_BUTTON_SETTING, 1) != 0);
+        gamepadHome.setOnPreferenceChangeListener(
+            (preference, newValue) -> {
+                Settings.Secure.putInt(context.getContentResolver(),
+                        GAMEPAD_HOME_BUTTON_SETTING, (Boolean) newValue ? 1 : 0);
                 return true;
             });
     }
