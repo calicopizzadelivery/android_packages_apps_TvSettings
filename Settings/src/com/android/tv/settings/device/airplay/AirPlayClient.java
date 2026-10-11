@@ -35,6 +35,7 @@ public final class AirPlayClient {
     static final class State {
         final boolean enabled;
         final boolean requireCode;
+        final boolean autoDream;
         final String name;
         /** Paired devices: keys and names in step, ordered by name. */
         final String[] keys;
@@ -43,6 +44,7 @@ public final class AirPlayClient {
         private State(Bundle b) {
             enabled = b.getBoolean("enabled");
             requireCode = b.getBoolean("require_pin", true);
+            autoDream = b.getBoolean("auto_dream", true);
             name = b.getString("name", "");
             String[] k = b.getStringArray("paired_keys");
             String[] n = b.getStringArray("paired_names");
@@ -71,6 +73,12 @@ public final class AirPlayClient {
         extras.putBoolean("value", on);
         return call(context, "set_require_pin", null, extras);
     }
+    static State setAutoDream(Context context, boolean on) {
+        Bundle extras = new Bundle();
+        extras.putBoolean("value", on);
+        return call(context, "set_auto_dream", null, extras);
+    }
+
 
     /** A null key forgets every device. */
     @Nullable

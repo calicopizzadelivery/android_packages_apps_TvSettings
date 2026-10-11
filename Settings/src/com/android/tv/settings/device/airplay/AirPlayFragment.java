@@ -38,6 +38,7 @@ public class AirPlayFragment extends SettingsPreferenceFragment
     private static final String KEY_ENABLED = "airplay_enabled";
     private static final String KEY_NAME = "airplay_name";
     private static final String KEY_CODE = "airplay_code";
+    private static final String KEY_DREAM = "airplay_dream";
     private static final String KEY_PAIRED = "airplay_paired";
 
     private final ContentObserver mObserver =
@@ -55,6 +56,7 @@ public class AirPlayFragment extends SettingsPreferenceFragment
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.airplay, null);
         findPreference(KEY_ENABLED).setOnPreferenceChangeListener(this);
+        findPreference(KEY_DREAM).setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -77,6 +79,12 @@ public class AirPlayFragment extends SettingsPreferenceFragment
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (KEY_DREAM.equals(preference.getKey())) {
+            // Read when a stream starts, so this applies to the next one and
+            // never interrupts one in progress.
+            AirPlayClient.setAutoDream(getContext(), (Boolean) newValue);
+            return true;
+        }
         // The switch moves now; the receiver confirms through the observer,
         // and refresh() puts it back if it did not start.
         AirPlayClient.setEnabled(getContext(), (Boolean) newValue);
@@ -93,6 +101,7 @@ public class AirPlayFragment extends SettingsPreferenceFragment
         findPreference(KEY_NAME).setSummary(state.name);
         findPreference(KEY_CODE).setSummary(state.requireCode
                 ? R.string.airplay_code_summary_on : R.string.airplay_code_summary_off);
+        ((TwoStatePreference) findPreference(KEY_DREAM)).setChecked(state.autoDream);
 
         String devices = Arrays.toString(state.keys) + Arrays.toString(state.names);
         if (devices.equals(mShownDevices)) {

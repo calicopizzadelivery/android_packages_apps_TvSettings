@@ -3041,6 +3041,8 @@
     <string name="airplay_code_off">Don\u2019t ask</string>
     <string name="airplay_code_off_summary">Any device on your network can mirror its screen and play audio here</string>
     <!-- The devices that have entered the code -->
+    <string name="airplay_dream_title">Show what\u2019s playing</string>
+    <string name="airplay_dream_summary">When audio starts, put the screen saver up with the track on it. Turn off to leave the screen as it is.</string>
     <string name="airplay_paired_title">Paired devices</string>
     <string name="airplay_paired_none">No devices are paired</string>
     <string name="airplay_paired_none_summary">A device pairs by entering the code this TV shows the first time it connects</string>
