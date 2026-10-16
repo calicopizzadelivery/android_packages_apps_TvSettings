@@ -23,6 +23,11 @@
         android:key="airplay_code"
         android:title="@string/airplay_code_title" />
     <SwitchPreference
+        android:key="airplay_open_audio"
+        android:persistent="false"
+        android:summary="@string/airplay_open_audio_summary"
+        android:title="@string/airplay_open_audio_title" />
+    <SwitchPreference
         android:key="airplay_dream"
         android:persistent="false"
         android:summary="@string/airplay_dream_summary"

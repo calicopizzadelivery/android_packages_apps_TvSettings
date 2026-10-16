@@ -36,6 +36,7 @@ public final class AirPlayClient {
         final boolean enabled;
         final boolean requireCode;
         final boolean autoDream;
+        final boolean openAudio;
         final String name;
         /** Paired devices: keys and names in step, ordered by name. */
         final String[] keys;
@@ -45,6 +46,7 @@ public final class AirPlayClient {
             enabled = b.getBoolean("enabled");
             requireCode = b.getBoolean("require_pin", true);
             autoDream = b.getBoolean("auto_dream", true);
+            openAudio = b.getBoolean("open_audio", true);
             name = b.getString("name", "");
             String[] k = b.getStringArray("paired_keys");
             String[] n = b.getStringArray("paired_names");
@@ -78,6 +80,12 @@ public final class AirPlayClient {
         extras.putBoolean("value", on);
         return call(context, "set_auto_dream", null, extras);
     }
+    static State setOpenAudio(Context context, boolean on) {
+        Bundle extras = new Bundle();
+        extras.putBoolean("value", on);
+        return call(context, "set_open_audio", null, extras);
+    }
+
 
 
     /** A null key forgets every device. */

@@ -3041,6 +3041,8 @@
     <string name="airplay_code_off">Don\u2019t ask</string>
     <string name="airplay_code_off_summary">Any device on your network can mirror its screen and play audio here</string>
     <!-- The devices that have entered the code -->
+    <string name="airplay_open_audio_title">Allow audio without a code</string>
+    <string name="airplay_open_audio_summary">Any device on your network can play sound here. Needed for Music on a Mac, which never asks for a code. Screen mirroring still requires one. Turn off to require the code for audio too.</string>
     <string name="airplay_dream_title">Show what\u2019s playing</string>
     <string name="airplay_dream_summary">When audio starts, put the screen saver up with the track on it. Turn off to leave the screen as it is.</string>
     <string name="airplay_paired_title">Paired devices</string>
