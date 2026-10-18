@@ -49,6 +49,14 @@
         <intent android:action="android.settings.SHOW_MANUAL" />
     </Preference>
 
+    <!-- About JetsonTV: what this build is, its licence, where the source is,
+         and who it is built on. Sits above Legal Information because that is
+         the platform's generic screen and this is the specific one. -->
+    <Preference
+        android:key="jetsontv_about"
+        android:title="@string/jetsontv_about_title"
+        android:fragment="com.android.tv.settings.about.JetsonTvAboutFragment" />
+
     <!-- Legal Information -->
     <Preference
         android:key="container"

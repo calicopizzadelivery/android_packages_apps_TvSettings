@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<!-- Settings > About > About JetsonTV. The summaries are filled in by
+     JetsonTvAboutFragment; the licence entry deliberately hands off to the
+     platform's own renderer (android.settings.LICENSE, backed by the
+     build-generated NOTICE.xml.gz) rather than carrying its own copy, which
+     would drift from the tree. -->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/jetsontv_about_title">
+
+    <Preference
+        android:key="jetsontv_build"
+        android:selectable="false"
+        android:title="@string/jetsontv_build_title" />
+
+    <Preference
+        android:key="jetsontv_license"
+        android:selectable="false"
+        android:summary="@string/jetsontv_license_summary"
+        android:title="@string/jetsontv_license_title" />
+
+    <Preference
+        android:key="jetsontv_source"
+        android:selectable="false"
+        android:summary="@string/jetsontv_source_summary"
+        android:title="@string/jetsontv_source_title" />
+
+    <Preference
+        android:key="jetsontv_credits"
+        android:selectable="false"
+        android:summary="@string/jetsontv_credits_summary"
+        android:title="@string/jetsontv_credits_title" />
+
+    <!-- The platform's third-party notice renderer, built from every module's
+         declared license_text. Everything credited above appears there. -->
+    <Preference
+        android:key="jetsontv_notices"
+        android:summary="@string/jetsontv_notices_summary"
+        android:title="@string/jetsontv_notices_title">
+        <intent android:action="android.settings.LICENSE" />
+    </Preference>
+
+</PreferenceScreen>

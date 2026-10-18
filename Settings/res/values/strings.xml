@@ -3056,4 +3056,24 @@
     <string name="airplay_forget_all_message">Each will have to enter a code again the next time it connects.</string>
     <string name="airplay_forget">Forget</string>
 
+
+    <!-- About JetsonTV ============================================= -->
+    <!-- Title of the About JetsonTV screen [CHAR LIMIT=40] -->
+    <string name="jetsontv_about_title">About JetsonTV</string>
+    <!-- Build identifier row [CHAR LIMIT=40] -->
+    <string name="jetsontv_build_title">Build</string>
+    <!-- Build summary: %1$s is the build id, %2$s the Android version -->
+    <string name="jetsontv_build_summary"><xliff:g id="build" example="lineage_porg-userdebug">%1$s</xliff:g>\nAndroid <xliff:g id="version" example="15">%2$s</xliff:g></string>
+    <!-- Licence row [CHAR LIMIT=40] -->
+    <string name="jetsontv_license_title">Licence</string>
+    <string name="jetsontv_license_summary">GPL-3.0-or-later. This device runs free software; you have the right to the source for it, and to modify and redistribute it.</string>
+    <!-- Source row [CHAR LIMIT=40] -->
+    <string name="jetsontv_source_title">Source code</string>
+    <string name="jetsontv_source_summary">github.com/calicopizzadelivery/jetson-nano-android-tv</string>
+    <!-- Credits row [CHAR LIMIT=40] -->
+    <string name="jetsontv_credits_title">Built on</string>
+    <string name="jetsontv_credits_summary">LineageOS, and for AirPlay: UxPlay, shairport-sync and shairplay. Thank you.</string>
+    <!-- Third-party notices row [CHAR LIMIT=60] -->
+    <string name="jetsontv_notices_title">Open source licences</string>
+    <string name="jetsontv_notices_summary">Full notices for every component in this build</string>
 </resources>
